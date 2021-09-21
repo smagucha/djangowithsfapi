@@ -1,0 +1,28 @@
+{% extends 'ecom2/base.html'%}
+{%block content%}
+<form method="post">
+    {%csrf_token%}
+    <select name="q" id='q'>
+        {%for i in cate %}
+            <option>{{i.name}}</option>
+        {%endfor%}
+    </select>
+    <button type="submit">submit</button>
+</form>
+
+<div class="small-container">
+        <div class="row">
+            {%for i in catefind %}
+            <div class="col-4">
+                <a href="product_details.html"><img src="{{i.photo.url}}"></a>
+                <h4>{{i.name}}</h4>
+                <div class="rating">
+                   {{i.category}}
+                </div>
+                <p>ksh: {{i.price}}</p>
+            </div>
+            {%endfor%}
+        </div>     
+    </div>
+{%endblock%}
+
