@@ -1,6 +1,7 @@
 {% extends 'ecom2/base.html'%}
 {%block content%}
-<form method="post">
+
+<form method="Post">
     {%csrf_token%}
     <select name="q" id='q'>
         {%for i in cate %}

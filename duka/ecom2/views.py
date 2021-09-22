@@ -7,8 +7,6 @@ import requests
 
 # Create your views here.
 
-
-
 def listproduct(request):
 	list= Product.objects.all()
 	context={
@@ -16,19 +14,15 @@ def listproduct(request):
 	}
 	return render(request, 'ecom2/listproduct.html', context)
 
-
 def category(request):
 	cate = Catergory.objects.all()
-	values=request.POST.get('q','')
-	x = Catergory.objects.get(name=values)
-	print(values)
-	
-	catefind= x.product_set.all()
-	for i in catefind:
-		print(i)
+	catefind = None
+	if request.method == 'POST':
+		values=request.POST.get('q','')
+		x = Catergory.objects.get(name=values)
+		catefind= x.product_set.all()
 	context ={
-		'cate': cate,
 		'catefind': catefind,
+		'cate': cate, 
 	}
-
 	return render(request, 'ecom2/catergory.html', context)
