@@ -25,8 +25,8 @@
                     <li><a href="account.html">Account</a></li>
                 </ul>
             </nav>
-            <a href="cart.html"><img src="static/images/cart.png" width="30px" height="30px"></a>
-            <img src="static/images/menu.png" class="menu-icon" onclick="menutoggle()">
+            <a href="{% url 'cart_detail' %}"><img src="{% static 'images/cart.png'%}" width="30px" height="30px"></a>
+            <img src="{% static 'images/menu.png'%}" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
 
@@ -70,6 +70,7 @@
         }
 
     </script>
+    
 </body>
 
 </html>

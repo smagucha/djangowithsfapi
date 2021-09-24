@@ -4,7 +4,7 @@
         <div class="row">
         	{%for i in list %}
             <div class="col-4">
-                <a href="product_details.html"><img src="{{i.photo.url}}"></a>
+                <a href="{% url 'product_detail' i.id %}"><img src="{{i.photo.url}}"></a>
                 <h4>{{i.name}}</h4>
                 <div class="rating">
                    {{i.category}}
