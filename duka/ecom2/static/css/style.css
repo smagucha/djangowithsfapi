@@ -351,7 +351,7 @@ td{
     padding: 10px 5px;
 }
 td input{
-    width: 40px;
+    width: 20px;
     height: 30px;
     padding: 5px;
 }
@@ -359,6 +359,7 @@ td a{
     color: #ff523b;
     font-size: 12px;
 }
+
 td img{
     width: 80px;
     height: 80px;
@@ -379,6 +380,25 @@ td:last-child{
 th:last-child{
     text-align: right;
 }
+.buttonupdate{
+    height: 30px;
+    width: 100px;
+    background-color: green;
+    text-align: center;
+    border-radius: 8px;
+    border: 0px;
+    color: white;
+}
+.buttonremove{
+    height: 30px;
+    width: 100px;
+    background-color: red;
+    text-align: center;
+    border-radius: 8px;
+    border: 0px;
+    color: white;
+}
+
 
 /* Account page */
 .account-page{
@@ -415,7 +435,7 @@ th:last-child{
     transition: transform 1s;
 }
 form input{
-    width: 100%;
+    width: 50%;
     height: 30px;
     margin: 10px 0;
     padding: 0 10px;

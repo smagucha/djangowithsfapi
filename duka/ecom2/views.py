@@ -35,46 +35,4 @@ def product_detail(request, id):
 		'product': product,
 		'cart_product_form': cart_product_form,
 	}
-	print()
 	return render(request, 'ecom2/product_details.html',context)
-
-
-# def ecome_home(request):
-# 	if request.session.test_cookie_worked():
-# 		request.session.delete_test_cookie()
-# 	else:
-# 		request.session.set_test_cookie()
-# 		messages.error(request, 'please enable cookie')
-
-# 	return render(request, 'ecom2/cookie.html')
-
-# def save_session_data(request):
-# 	request.session['user_id']=20
-# 	request.session['team']='arsenal'
-# 	return HttpResponse('session data saved')
-
-# def access_session_data(request):
-# 	response =''
-# 	if request.session.get('user_id'):
-# 		user_id=request.session.get('user_id')
-# 		response +='use id: {0} <br>'.format(user_id)
-# 	if request.session.get('team'):
-# 		team=request.session.get('team')
-# 		response +='team: {0} <br>'.format(team)
-# 	if not response:
-# 		return HttpResponse('no session data')
-# 	else:
-# 		return HttpResponse(response)
-
-# def delete_session_data(request):
-# 	try:
-# 		del request.session['user_id']
-# 		del request.session['team']
-# 	except KeyError:
-# 		pass
-
-# 	return HttpResponse('session data cleared')
-
-
-
-

@@ -1,52 +1,66 @@
 {% extends "ecom2/base.html" %}
 {% load static %}
 {% block content %}
-<h1>Your shopping cart</h1>
-<table class="cart">
-	<thead>
-		<tr>
-			<th>Image</th>
+<div class="small-container cart-page">
+        <table>
+            <tr>
+            <th>Image</th>
 			<th>Product</th>
 			<th>Quantity</th>
-			<th>Remove</th>
 			<th>Unit price</th>
 			<th>Price</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for item in cart %}
-		{% with product=item.product %}
-		<tr>
-			<td>
-			<a href="{{product.get_absolute_url}}">
-			<img src="{{ product.photo.url}}
-			">
-			</a>
-			</td>
-			<td>{{ product.name }}</td>
-			<td>{{ item.quantity }}</td>
-			<td>
-		<form action="{% url 'cart_remove' product.id %}"
-		method="post">
-		<input type="submit" value="Remove">
-		{% csrf_token %}
-		</form>
-		</td>
-		<td class="num">${{ item.price }}</td>
-		<td class="num">${{ item.total_price }}</td>
-		</tr>
-		{% endwith %}
-	{% endfor %}
-	<tr class="total">
-	<td>Total</td>
-	<td colspan="4"></td>
-	<td class="num">${{ cart.get_total_price }}</td>
-	</tr>
-	</tbody>
-</table>
-<p class="text-right">
+            </tr>
+            {% for item in cart %}
+			{% with product=item.product %}
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <a href="{{product.get_absolute_url}}">
+							<img src="{{ product.photo.url}}">
+	                        <div>
+	                            <p>{{ product.name }}</p>
+	                            <small>${{ item.price }}</small>
+	                            
+	                            <form action="{% url 'cart_remove' product.id %}" method="post">
+									<button  class='buttonremove' type="submit"> remove</button>
+									{% csrf_token %}
+									</form>
+                        	</div>
+                    </div>
+                </td>
+                <td>{{ product.name }}</td>
+                <td>
+                	<form action="{% url 'cart_add' product.id %}" method="post">
+					{{ item.update_quantity_form.quantity }}
+					{{ item.update_quantity_form.override }}
+					<button  class="buttonupdate" type="submit"> update</button>
+					{% csrf_token %}
+					</form>
+				</td>
+				<td>${{ item.price }}</td>
+                <td>${{ item.total_price }}</td>
+            </tr>
+            	{% endwith %}
+		{% endfor %}
+        </table>
+        <div class="total-price">
+            <table>
+                
+                <tr>
+                    <td>Total</td>
+                    <td>${{ cart.get_total_price }}</td>
+                </tr>
+            </table>
+        </div>
+    
+    <p class="text-right">
 <a href="{% url 'home' %}" class="button
-light">Continue shopping</a>
-<a href="#" class="button">Checkout</a>
+light">Continue shopping</a><br>
+<a href="{% url 'order_create' %}" class="button">Checkout</a>
 </p>
+</div>
 {% endblock %}
+
+
+
+
