@@ -1,6 +1,8 @@
 {% extends "ecom2/base.html" %}
 {% load static %}
 {% block content %}
+
+current user{{user.username}}
 <div class="small-container cart-page">
         <table>
             <tr>
@@ -48,7 +50,7 @@
                 
                 <tr>
                     <td>Total</td>
-                    <td>${{ cart.get_total_price }}</td>
+                    <td>${{cart.get_total_price}}</td>
                 </tr>
             </table>
         </div>

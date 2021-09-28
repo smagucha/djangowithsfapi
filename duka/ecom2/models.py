@@ -15,3 +15,6 @@ class Product(models.Model):
 	description = models.TextField()
 	photo = models.ImageField(upload_to='images')
 
+	def __str__(self):
+		return self.name
+
